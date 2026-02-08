@@ -11,7 +11,7 @@ git clone https://github.com/yourusername/achievement-management-system.git
 cd achievement-management-system
 
 # Create virtual environment
-python -m venv venv
+python3 -m venv venv
 
 # Activate virtual environment
 # On Windows:

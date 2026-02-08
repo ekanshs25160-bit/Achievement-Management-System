@@ -4,25 +4,197 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Achievement Management System</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename = 'styles.css') }}" />
-  <script src="{{ url_for('static', filename = 'script.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <style>
+    body.landing-page {
+      min-height: 100vh;
+      height: auto;
+      align-items: stretch;
+      display: block;
+      padding: 0;
+    }
+    .landing-hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+      position: relative;
+    }
+    .landing-hero .hero-badge {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-color);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .landing-hero .hero-title {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 640px;
+      margin: 0 auto 20px;
+    }
+    .landing-hero .hero-description {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+    .landing-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .landing-cta .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-width: 180px;
+    }
+    .landing-cta .cta-btn.student {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+    }
+    .landing-cta .cta-btn.student:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.35);
+    }
+    .landing-cta .cta-btn.teacher {
+      background: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--primary-color);
+    }
+    .landing-cta .cta-btn.teacher:hover {
+      background: rgba(var(--primary-rgb), 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.2);
+    }
+    .landing-features {
+      padding: 60px 24px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .landing-features .features-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--text-color);
+    }
+    .landing-features .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .landing-features .feature-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .landing-features .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-color);
+    }
+    .landing-features .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(var(--primary-rgb), 0.2);
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+    .landing-features .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-color);
+    }
+    .landing-features .feature-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      opacity: 0.85;
+      margin: 0;
+    }
+    .landing-footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      border-top: 1px solid var(--border-color);
+    }
+    @media (max-width: 600px) {
+      .landing-cta { flex-direction: column; }
+      .landing-cta .cta-btn { width: 100%; min-width: unset; }
+    }
+  </style>
 </head>
-<body>
+<body class="landing-page">
   <div class="toggle-container">
     <button id="mode-toggle">Dark Mode 🌙</button>
   </div>
 
-  <div class="container home-container">
-    <div class="title">Achievement Management System</div>
-    <div class="content">
-      <div class="welcome-text">
-        <p>Welcome to the Achievement Management System. Please select your role to continue.</p>
+  <section class="landing-hero">
+    <p class="hero-badge">Academic achievements, one place</p>
+    <h1 class="hero-title">Achievement Management System</h1>
+    <p class="hero-description">
+      A single platform for students and teachers to record, track, and showcase academic achievements—from hackathons and coding competitions to papers and conferences. No more scattered certificates or lost records.
+    </p>
+    <div class="landing-cta">
+      <a href="{{ url_for('student') }}" class="cta-btn student">Student Login</a>
+      <a href="{{ url_for('teacher') }}" class="cta-btn teacher">Teacher Login</a>
+    </div>
+  </section>
+
+  <section class="landing-features">
+    <h2 class="features-title">What you can do</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📋</div>
+        <h3>Track Achievements</h3>
+        <p>Record hackathons, coding events, paper presentations, conferences, and symposiums in one place.</p>
       </div>
-      <div class="login-options">
-        <a href="{{ url_for('student') }}" class="login-button student">Student Login</a>
-        <a href="{{ url_for('teacher') }}" class="login-button teacher">Teacher Login</a>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📊</div>
+        <h3>Dashboard &amp; Reports</h3>
+        <p>View analytics, filter by type and date, and see your progress at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📄</div>
+        <h3>Certificate Management</h3>
+        <p>Upload and store certificates (PDF, images). Access and download proof anytime.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🔍</div>
+        <h3>Quick Student Lookup</h3>
+        <p>Teachers get auto-complete search by student ID or name for fast data entry.</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <footer class="landing-footer">
+    Achievement Management System — Built for students and educators.
+  </footer>
 </body>
 </html>

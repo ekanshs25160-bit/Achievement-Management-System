@@ -21,7 +21,7 @@
     .stat-card {
       flex: 1;
       min-width: 200px;
-      background: rgba(255, 0, 0, 0.1);
+      background: rgba(var(--primary-rgb), 0.1);
       border-radius: 10px;
       padding: 20px;
       text-align: center;
@@ -91,7 +91,7 @@
     
     .dashboard-action:hover {
       transform: translateY(-5px);
-      background: rgba(255, 0, 0, 0.1);
+      background: rgba(var(--primary-rgb), 0.1);
     }
     
     .action-icon {
@@ -266,7 +266,7 @@
       </div>
       
       <div class="logout-section" style="text-align: center; margin-top: 40px;">
-        <a href="{{ url_for('home') }}" style="color: var(--primary-color); text-decoration: none;">Logout</a>
+        <a href="{{ url_for('logout') }}" style="color: var(--primary-color); text-decoration: none;">Logout</a>
       </div>
     </div>
   </div>

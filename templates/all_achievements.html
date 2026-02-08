@@ -43,12 +43,12 @@
     }
     
     .achievements-table th {
-      background-color: rgba(255, 0, 0, 0.1);
+      background-color: rgba(var(--primary-rgb), 0.1);
       font-weight: 600;
     }
     
     .achievements-table tbody tr:hover {
-      background-color: rgba(255, 0, 0, 0.05);
+      background-color: rgba(var(--primary-rgb), 0.05);
     }
     
     .achievements-table tbody tr:last-child td {
@@ -76,7 +76,7 @@
     }
     
     .view-button:hover {
-      opacity: 0.9;
+      background-color: var(--primary-hover);
     }
     
     .certificate-link {
@@ -139,7 +139,7 @@
           <tbody>
             {% for achievement in achievements %}
               <tr>
-                <td>{{ achievement.student_name }} ({{ achievement.student_id }})</td>
+                <td>{{ achievement.student.student_name }} ({{ achievement.student_id }})</td>
                 <td><span class="achievement-type-badge">{{ achievement.achievement_type }}</span></td>
                 <td>{{ achievement.event_name }}</td>
                 <td>{{ achievement.achievement_date }}</td>
